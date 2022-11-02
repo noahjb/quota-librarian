@@ -1,5 +1,5 @@
-# This script deploys your website automatically
-name: Deploy
+# This script runs the CI for the repo
+name: CI
 
 # Only trigger this script when you push to the main branch
 on:
@@ -14,6 +14,19 @@ jobs:
     # Download our master branch
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.5.1
+      with:
+        # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+        node-version: 16.x
+        # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+        cache: yarn
+        # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+        cache-dependency-path: yarn.lock
+        
+    - name: Install Dependencies
+      run: yarn
 
     # Run our deployment command
     - name: Deploying the static website to gh-pages
