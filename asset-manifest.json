@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/quota-librarian/static/js/main.e50e35ec.js",
+    "static/js/787.cec26c7b.chunk.js": "/quota-librarian/static/js/787.cec26c7b.chunk.js",
+    "index.html": "/quota-librarian/index.html",
+    "main.e50e35ec.js.map": "/quota-librarian/static/js/main.e50e35ec.js.map",
+    "787.cec26c7b.chunk.js.map": "/quota-librarian/static/js/787.cec26c7b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e50e35ec.js"
+  ]
+}
