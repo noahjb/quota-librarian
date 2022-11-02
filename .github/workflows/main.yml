@@ -30,4 +30,8 @@ jobs:
 
     # Run our deployment command
     - name: Deploying the static website to gh-pages
-      run: yarn deploy
+      run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        yarn deploy -u "github-actions-bot <support+actions@github.com>"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
