@@ -31,54 +31,58 @@ export const NavBar = ({ onAdd, onCalculate }: NavBarProps) => {
   }, [books]);
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AutoStoriesIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
-          <Typography
-            variant="h4"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            QuotaLibrarian
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Typography variant="h6" component="div">
-            Today's Quota: {quota.toFixed(2)}
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              aria-label="input pages"
-              color="inherit"
-              onClick={onCalculate}
+    <Box sx={{ display: "flex" }}>
+      <AppBar position="static" component="nav">
+        <Container>
+          <Toolbar variant="dense" disableGutters>
+            <AutoStoriesIcon sx={{ display: { sm: "flex" }, mr: 1 }} />
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
             >
-              <CalculateIcon />
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="add book"
-              color="inherit"
-              onClick={onAdd}
+              QuotaLibrarian
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, textAlign: "center" }}
             >
-              <AddIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+              Today's Quota: {quota.toFixed(2)}
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { sm: "flex" } }}>
+              <IconButton
+                size="large"
+                aria-label="input pages"
+                color="inherit"
+                onClick={onCalculate}
+              >
+                <CalculateIcon />
+              </IconButton>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="add book"
+                color="inherit"
+                onClick={onAdd}
+              >
+                <AddIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </Box>
   );
 };
