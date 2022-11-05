@@ -20,7 +20,7 @@ export const BookForm = ({ onAdd, onCancel }: BookFormProps) => {
   const [author, setAuthor] = useState("");
   const [endPage, setEndPage] = useState<number>(1);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [dueDate, setDueDate] = useState<string>(moment().format("YYYY-M-D"));
+  const [dueDate, setDueDate] = useState<string>(moment().format("YYYY-MM-DD"));
   const [canSubmit, setCanSubmit] = useState(false);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const BookForm = ({ onAdd, onCancel }: BookFormProps) => {
       endPage,
       dueDate,
       currentPage,
-      dateOfCurrentPage: moment().format("YYYY-M-D"),
+      dateOfCurrentPage: moment().format("YYYY-MM-DD"),
       includeToday: false,
     });
     onAdd();
@@ -104,7 +104,7 @@ export const BookForm = ({ onAdd, onCancel }: BookFormProps) => {
             value={dueDate}
             onChange={(newDate: Moment | null) => {
               if (newDate) {
-                setDueDate(newDate.format("YYYY-M-D"));
+                setDueDate(newDate.format("YYYY-MM-DD"));
               } else {
                 setCanSubmit(false);
               }

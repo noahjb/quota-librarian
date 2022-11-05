@@ -37,7 +37,7 @@ const editBookFn = async ({ id, edits }: EditBookPayload) => {
     // Changes to current page should always be reflected
     // as of the date it was edited
     if (edits.currentPage) {
-      newBook.dateOfCurrentPage = moment().format("YYYY-M-D");
+      newBook.dateOfCurrentPage = moment().format("YYYY-MM-DD");
     }
 
     // Changes to title and author could modify the entire book,
