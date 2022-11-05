@@ -21,7 +21,7 @@ export const App = () => {
           setIsCalculating(true);
         }}
       />
-      <Container maxWidth="sm">
+      <Container>
         {isAdding ? (
           <BookForm onAdd={finishAdding} onCancel={finishAdding} />
         ) : (

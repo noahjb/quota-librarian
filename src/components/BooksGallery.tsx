@@ -1,6 +1,6 @@
 import { BookCard } from "./BookCard";
 import { useBooks } from "../data/useBooks";
-import { FormControlLabel, Checkbox, Button } from "@mui/material";
+import { FormControlLabel, Checkbox, Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 
 interface BooksGalleryProps {
@@ -72,7 +72,7 @@ export const BooksGallery = ({
   const onCancelUpdate = () => {
     onFinishCalculating();
     setPageUpdates([]);
-  }
+  };
 
   const changeCurrentPage = (id: string, newPage: number) => {
     const newUpdates = [...pageUpdates];
@@ -104,8 +104,17 @@ export const BooksGallery = ({
           }
         />
       )}
-      {books.map((book) => (
-        <div key={book.id}>
+      <Grid
+        container
+        sx={{
+          display: "grid",
+          gap: "0.75em",
+          alignItems: "center",
+          gridAutoRows: "1fr",
+          gridTemplateColumns: "repeat(auto-fill, minmax(343px, 1fr))",
+        }}
+      >
+        {books.map((book) => (
           <BookCard
             book={book}
             isCalculating={isCalculating}
@@ -114,9 +123,10 @@ export const BooksGallery = ({
             toggleIncludeToday={(id) => {
               editBook({ id, edits: { includeToday: !book.includeToday } });
             }}
+            key={book.id}
           />
-        </div>
-      ))}
+        ))}
+      </Grid>
     </>
   );
 };

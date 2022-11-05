@@ -1,4 +1,4 @@
-import { Card, CardMedia, TextField } from "@mui/material";
+import { Card, CardMedia, Container, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 import { Book } from "../interfaces/Book";
 import { BookContent } from "./BookContent";
@@ -21,39 +21,46 @@ export const BookCard = ({
   const [newCurrentPage, setNewCurrentPage] = useState(book.currentPage);
 
   return (
-    <Card sx={{ display: "flex" }} variant="outlined">
+    <Grid
+      item
+      component={Card}
+      sx={{ display: "flex", height: 1, overflow: "visible" }}
+      variant="outlined"
+    >
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{ objectFit: "cover", maxWidth: 128 }}
         image={book.imageUrl}
         alt={book.title}
       />
-      {isCalculating ? (
-        <>
-          <TextField
-            id="outlined-number"
-            label="Current Page"
-            type="number"
-            value={newCurrentPage}
-            onChange={(e) => {
-              onChangePage(book.id, parseInt(e.target.value));
-              setNewCurrentPage(parseInt(e.target.value));
-            }}
-            InputProps={{
-              inputProps: { min: 1, max: book.endPage },
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
+      <Container style={{ paddingLeft: 0, paddingRight: 0 }}>
+        {isCalculating ? (
+          <>
+            <TextField
+              id="outlined-number"
+              label="Current Page"
+              type="number"
+              value={newCurrentPage}
+              onChange={(e) => {
+                onChangePage(book.id, parseInt(e.target.value));
+                setNewCurrentPage(parseInt(e.target.value));
+              }}
+              InputProps={{
+                inputProps: { min: 1, max: book.endPage },
+              }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </>
+        ) : (
+          <BookContent
+            book={book}
+            onDelete={onDelete}
+            toggleIncludeToday={toggleIncludeToday}
           />
-        </>
-      ) : (
-        <BookContent
-          book={book}
-          onDelete={onDelete}
-          toggleIncludeToday={toggleIncludeToday}
-        />
-      )}
-    </Card>
+        )}
+      </Container>
+    </Grid>
   );
 };
