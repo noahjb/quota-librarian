@@ -23,10 +23,21 @@ export const BookContent = ({
   onDelete,
   toggleIncludeToday,
 }: BookContentProps) => (
-  <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}
+  >
     <CardContent>
       <Typography component="div" variant="body1" sx={{ fontWeight: "bold" }}>
-        {book.title.substring(0, book.title.indexOf(":"))}
+        {book.title.substring(
+          0,
+          ~book.title.indexOf(":")
+            ? book.title.indexOf(":")
+            : book.title.length
+        )}
       </Typography>
       <Typography variant="subtitle1" color="text.secondary" component="div">
         {book.author}
