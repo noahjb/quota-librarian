@@ -26,7 +26,7 @@ export const BookContent = ({
   <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
     <CardContent>
       <Typography component="div" variant="body1" sx={{ fontWeight: "bold" }}>
-        {book.title.substring(book.title.indexOf(":"))}
+        {book.title.substring(0, book.title.indexOf(":"))}
       </Typography>
       <Typography variant="subtitle1" color="text.secondary" component="div">
         {book.author}
