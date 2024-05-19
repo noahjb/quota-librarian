@@ -1,10 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
-import { Book, EditableBookFields } from "../interfaces/Book";
+import { Book, BookFieldsPayload } from "../interfaces/Book";
 import { getBookData } from "./getBookData";
 import { readBooksFromStore, writeBooksToStore } from "./quotaStore";
-
-type BookFieldsPayload = Partial<EditableBookFields>;
 
 interface EditBookPayload {
   id: string;

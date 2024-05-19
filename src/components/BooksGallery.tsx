@@ -86,24 +86,26 @@ export const BooksGallery = ({
 
   return (
     <>
-      {isCalculating ? (
-        <>
-          <Button onClick={onUpdate}>Update</Button>
-          <Button onClick={onCancelUpdate}>Cancel</Button>
-        </>
-      ) : (
-        <FormControlLabel
-          label="Include Today"
-          control={
-            <Checkbox
-              checked={includeToday}
-              value={includeToday}
-              indeterminate={isIndeterminate}
-              onChange={updateGlobalIncludeToday}
-            />
-          }
-        />
-      )}
+      <div style={{ height: "42px" }}>
+        {isCalculating ? (
+          <>
+            <Button onClick={onUpdate}>Update</Button>
+            <Button onClick={onCancelUpdate}>Cancel</Button>
+          </>
+        ) : (
+          <FormControlLabel
+            label="Include Today"
+            control={
+              <Checkbox
+                checked={includeToday}
+                value={includeToday}
+                indeterminate={isIndeterminate}
+                onChange={updateGlobalIncludeToday}
+              />
+            }
+          />
+        )}
+      </div>
       <Grid
         container
         sx={{
@@ -120,6 +122,9 @@ export const BooksGallery = ({
             isCalculating={isCalculating}
             onChangePage={changeCurrentPage}
             onDelete={deleteBook}
+            onEdit={(id, edits) => {
+              editBook({ id, edits });
+            }}
             toggleIncludeToday={(id) => {
               editBook({ id, edits: { includeToday: !book.includeToday } });
             }}

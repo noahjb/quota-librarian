@@ -3,7 +3,7 @@ interface IndustryIdentifier {
   identifier: string;
 }
 
-interface GBooksItem {
+export interface GBooksItem {
   kind: string;
   id: string;
   etag: string;

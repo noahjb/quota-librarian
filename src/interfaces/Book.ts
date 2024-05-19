@@ -12,3 +12,5 @@ export interface Book extends EditableBookFields {
   imageUrl: string;
   dateOfCurrentPage: string;
 }
+
+export type BookFieldsPayload = Partial<EditableBookFields>;
